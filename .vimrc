@@ -6,4 +6,5 @@ set colorcolumn=110
 highlight ColorColumn ctermbg=8
 let &path.="code,"
 autocmd vimenter * NERDTree
-
+set makeprg=make\ -C\ ./build\ -j9
+nnoremap <F4> :make!<cr>
