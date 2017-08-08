@@ -1,6 +1,10 @@
 CC=g++
-SRCDIR = ../code
-CFLAGS = -I$(SRCDIR)/ -std=c++11 -Wall -Werror
+SRCDIR = ../code/
+INCLUDES = $(SRCDIR) 
+LIBS = X11 GL
+INC = $(INCLUDES:%=-I%)
+LIB = $(LIBS:%=-l%)
+CFLAGS = -std=c++11 -Wall -Werror
 OUTPUT_FILE = ../game
 main: $(SRCDIR)/main.cpp
-	$(CC) -o $(OUTPUT_FILE) $(CFLAGS) $(SRCDIR)/main.cpp
+	$(CC) $(CFLAGS) $(INC) $(SRCDIR)main.cpp -o $(OUTPUT_FILE) $(LIB)

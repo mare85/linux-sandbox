@@ -8,3 +8,5 @@ let &path.="code,"
 autocmd vimenter * NERDTree
 set makeprg=make\ -C\ ./build\ -j9
 nnoremap <F4> :make!<cr>
+nnoremap <F5> :!./game<cr>
+let &path.="code,/usr/include"
