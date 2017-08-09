@@ -5,7 +5,7 @@ OUTPUT_FILE = ../game
 CFLAGS = -std=c++11 -Wall -Werror
 
 _INC = ../code 
-_LIB = X11 GL
+_LIB = X11 GL pthread
 _DEPS = \
 	Graphics/GdiContext.h
 

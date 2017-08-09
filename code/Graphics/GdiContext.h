@@ -16,6 +16,8 @@ namespace Graphics
 	public:
 		bool startUp( unsigned int width, unsigned int height);
 		void shutDown();
+		void clearRender();
+		void swapRender();
 		
 	};
 }

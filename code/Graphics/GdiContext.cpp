@@ -18,7 +18,7 @@ bool Graphics::GdiContext::startUp( unsigned int width, unsigned int height)
 		Colormap colormap = XCreateColormap( display_, root, visInfo->visual, AllocNone);
 		XSetWindowAttributes desc;
 		desc.colormap = colormap;
-		desc.event_mask = ExposureMask|KeyPressMask;
+		desc.event_mask = KeyPressMask;
 		window_ = XCreateWindow( display_, root,
 				0, 0, width, height, 0, visInfo->depth, InputOutput, visInfo->visual, 
 				CWColormap | CWEventMask, &desc );
@@ -40,3 +40,15 @@ void Graphics::GdiContext::shutDown()
 		display_ = nullptr;
 	}
 }
+
+void Graphics::GdiContext::clearRender()
+{
+	glClearColor(1.0, 1.0, 1.0, 1.0);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+}
+
+void Graphics::GdiContext::swapRender()
+{
+	glXSwapBuffers(display_, window_ );
+}
+
