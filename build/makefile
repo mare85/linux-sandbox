@@ -1,10 +1,30 @@
 CC=g++
 SRCDIR = ../code/
-INCLUDES = $(SRCDIR) 
-LIBS = X11 GL
-INC = $(INCLUDES:%=-I%)
-LIB = $(LIBS:%=-l%)
-CFLAGS = -std=c++11 -Wall -Werror
+OBJDIR = obj/
 OUTPUT_FILE = ../game
-main: $(SRCDIR)/main.cpp
-	$(CC) $(CFLAGS) $(INC) $(SRCDIR)main.cpp -o $(OUTPUT_FILE) $(LIB)
+CFLAGS = -std=c++11 -Wall -Werror
+
+_INC = ../code 
+_LIB = X11 GL
+_DEPS = \
+	Graphics/GdiContext.h
+
+_SRCS = $(wildcard $(SRCDIR)*.cpp ) \
+		$(wildcard $(SRCDIR)Graphics/*.cpp )
+
+DEPS =  $(wildcard $(SRCDIR)*.h ) \
+		$(wildcard $(SRCDIR)Graphics/*.h )
+
+INC = $(_INC:%=-I%)
+LIB = $(_LIB:%=-l%)
+OBJ = $(_SRCS:$(SRCDIR)%.cpp=$(OBJDIR)%.o )
+
+$(OBJDIR)%.o: $(SRCDIR)%.cpp $(DEPS) prepareDir
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
+
+main: $(OBJ)
+	$(CC) $(CFLAGS) $(INC) $^ -o $(OUTPUT_FILE) $(LIB)
+prepareDir:
+	python prepareObjDir.py
+
+
