@@ -2,6 +2,7 @@ CC=g++
 SRCDIR = ../code/
 OBJDIR = obj/
 OUTPUT_FILE = ../game
+OUTPUT_FILE_DBG = ../gameDbg
 CFLAGS = -std=c++11 -Wall -Werror
 
 _INC = ../code 
@@ -27,4 +28,6 @@ main: $(OBJ)
 prepareDir:
 	python prepareObjDir.py
 
-
+debug: CFLAGS += -DDEBUG -g
+debug: OUTPUT_FILE = $(OUTPUT_FILE_DBG)
+debug: main

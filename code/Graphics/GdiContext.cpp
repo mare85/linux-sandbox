@@ -26,6 +26,10 @@ bool Graphics::GdiContext::startUp( unsigned int width, unsigned int height)
 		XStoreName(display_, window_, "Linux Sandbox - mare");
 		glxContext_ = glXCreateContext(display_, visInfo, nullptr, GL_TRUE);
 		glXMakeCurrent(display_, window_, glxContext_);
+		//int version[2];
+		//glGetIntegerv(GL_MAJOR_VERSION, version);
+		//glGetIntegerv(GL_MINOR_VERSION, version + 1);
+		//std::cout<<"opengl version " << version[0] << "." << version[1] << std::endl;
 		return true;
 	}
 	return false;

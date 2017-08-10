@@ -4,9 +4,10 @@ set shiftwidth=4
 set noexpandtab
 set colorcolumn=110
 highlight ColorColumn ctermbg=8
-let &path.="code,"
+let &path.="code,/usr/include"
 autocmd vimenter * NERDTree
 set makeprg=make\ -C\ ./build\ -j9
+nnoremap <F3> :!make -C ./build -j9 debug<cr>
 nnoremap <F4> :make!<cr>
 nnoremap <F5> :!./game<cr>
-let &path.="code,/usr/include"
+nnoremap <F6> :!gdbtui ./gameDbg<cr>
