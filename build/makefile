@@ -7,14 +7,16 @@ CFLAGS = -std=c++11 -Wall -Werror
 
 _INC = ../code 
 _LIB = X11 GL pthread
-_DEPS = \
-	Graphics/GdiContext.h
 
 _SRCS = $(wildcard $(SRCDIR)*.cpp ) \
-		$(wildcard $(SRCDIR)Graphics/*.cpp )
+		$(wildcard $(SRCDIR)Graphics/*.cpp ) \
+		$(wildcard $(SRCDIR)Game/*.cpp ) \
+		$(wildcard $(SRCDIR)Input/*.cpp )
 
 DEPS =  $(wildcard $(SRCDIR)*.h ) \
-		$(wildcard $(SRCDIR)Graphics/*.h )
+		$(wildcard $(SRCDIR)Graphics/*.h ) \
+		$(wildcard $(SRCDIR)Game/*.h ) \
+		$(wildcard $(SRCDIR)Input/*.h )
 
 INC = $(_INC:%=-I%)
 LIB = $(_LIB:%=-l%)

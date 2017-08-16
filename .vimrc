@@ -11,3 +11,4 @@ nnoremap <F3> :!make -C ./build -j9 debug<cr>
 nnoremap <F4> :make!<cr>
 nnoremap <F5> :!./game<cr>
 nnoremap <F6> :!gdbtui ./gameDbg<cr>
+nnoremap <F2> :!python ./scripts/addClass.py 

@@ -1,5 +1,9 @@
 import os
 import os.path
+#
+# (C) Copytight 2017 Marek Bielawski
+# copyDirs
+#
 
 def copyDirs(root):
    inDir = '../code/' + root 
